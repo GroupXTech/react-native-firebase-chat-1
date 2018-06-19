@@ -1,6 +1,8 @@
 import * as types from './actionTypes'
 import firebaseService from '../../services/firebase'
 
+const FIREBASE_REF_CONTATCS = firebaseService.database().ref('Contacts')
+
 export const restoreSession = () => {
   return (dispatch) => {
     dispatch(sessionRestoring())
@@ -52,6 +54,15 @@ export const signupUser = (email, password) => {
       .onAuthStateChanged(user => {
         if (user) {
           dispatch(sessionSuccess(user))
+          var newUser = {
+            id: user.uid,
+            email: user.email
+          }
+          FIREBASE_REF_CONTATCS.push().set(newUser, (error) => {
+            if (error) {
+              console.log('Create contact error: ', error)
+            }
+          })
           unsubscribe()
         }
       })
