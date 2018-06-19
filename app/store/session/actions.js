@@ -33,6 +33,16 @@ export const loginUser = (email, password) => {
     let unsubscribe = firebaseService.auth()
       .onAuthStateChanged(user => {
         if (user) {
+          var newUser = {
+            id: user.uid,
+            email: user.email
+          }
+          // FIREBASE_REF_CONTATCS.push().set(newUser, (error) => {
+          //   if (error) {
+          //     console.log('Create contact error: ', error)
+          //   }
+          // })
+          FIREBASE_REF_CONTATCS.child(user.uid).set(newUser);
           dispatch(sessionSuccess(user))
           unsubscribe()
         }
@@ -58,11 +68,12 @@ export const signupUser = (email, password) => {
             id: user.uid,
             email: user.email
           }
-          FIREBASE_REF_CONTATCS.push().set(newUser, (error) => {
-            if (error) {
-              console.log('Create contact error: ', error)
-            }
-          })
+          // FIREBASE_REF_CONTATCS.push().set(newUser, (error) => {
+          //   if (error) {
+          //     console.log('Create contact error: ', error)
+          //   }
+          // })
+          FIREBASE_REF_CONTATCS.child(user.uid).set(newUser);
           unsubscribe()
         }
       })
