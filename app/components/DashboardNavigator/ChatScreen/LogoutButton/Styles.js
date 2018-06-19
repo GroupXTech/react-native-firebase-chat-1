@@ -4,8 +4,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     marginRight: 10,
+    marginLeft: 10,
     height: 40,
     alignItems: 'center',
-    justifyContent:'center'
+    justifyContent: 'center'
   }
 })

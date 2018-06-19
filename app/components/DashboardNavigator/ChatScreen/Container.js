@@ -9,7 +9,8 @@ class ChatScreenContainer extends Component {
 
   static navigationOptions = {
     title: translations.t('chat'),
-    headerRight: <LogoutButton />
+    headerRight: <LogoutButton />,
+    headerLeft: <LogoutButton />,
   }
 
   render() {

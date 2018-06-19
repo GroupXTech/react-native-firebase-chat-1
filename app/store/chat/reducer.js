@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const chat = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case types.CHAT_MESSAGE_LOADING:
       return { ...state, sending: true, sendingError: null }
     case types.CHAT_MESSAGE_ERROR:

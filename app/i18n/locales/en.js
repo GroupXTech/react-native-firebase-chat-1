@@ -1,5 +1,5 @@
 export default {
-  login: 'Login',
+  login: 'Sign in',
   signup: 'Sign Up',
 
   email: 'Email',
