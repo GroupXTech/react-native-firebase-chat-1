@@ -8,6 +8,8 @@ export default {
   chat: 'Chat',
   message: 'Message',
 
+  contacts: 'Contacts',
+
   error: 'Error',
 
   you: 'You',

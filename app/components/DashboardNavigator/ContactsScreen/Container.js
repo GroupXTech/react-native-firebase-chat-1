@@ -2,17 +2,16 @@ import React, { Component } from 'react'
 
 import ChatScreen from './Component'
 import LogoutButton from './LogoutButton'
-import ContactButton from './ContactButton'
 
 import translations from '../../../i18n'
 
 class ChatScreenContainer extends Component {
 
-  static navigationOptions = ({ navigation }) => ({
-    title: translations.t('chat'),
+  static navigationOptions = {
+    title: translations.t('contacts'),
     headerRight: <LogoutButton />,
-    headerLeft: <ContactButton navigation={navigation} />,
-  })
+    headerLeft: <LogoutButton />,
+  }
 
   render() {
     return (
