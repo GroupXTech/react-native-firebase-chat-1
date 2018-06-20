@@ -27,10 +27,6 @@ class ContactsListComponent extends Component {
         </Text>
       )
     }
-
-    this.itemLayout = (data, index) => (
-      { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
-    )
   }
 
   componentDidUpdate() {
@@ -41,7 +37,7 @@ class ContactsListComponent extends Component {
 
   render() {
     const data = this.props.data
-    const contentContainerStyle = data.length ? null : styles.flatlistContainerStyle
+    const contentContainerStyle = styles.flatlistContainerStyle
     return (
       <FlatList
         ref={(c) => { this.flatList = c }}
@@ -50,9 +46,8 @@ class ContactsListComponent extends Component {
         data={data}
         keyExtractor={item => item.time}
         renderItem={this.renderItem}
-        getItemLayout={this.itemLayout}
         ListEmptyComponent={this.emptyList}
-        inverted />
+      />
     )
   }
 }

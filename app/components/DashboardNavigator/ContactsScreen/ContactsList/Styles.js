@@ -9,7 +9,7 @@ export default StyleSheet.create({
   },
   flatlistContainerStyle: {
     flexGrow: 1,
-    justifyContent: 'center'
+    justifyContent: 'flex-start',
   },
   placeholder: {
     fontSize: 16,
