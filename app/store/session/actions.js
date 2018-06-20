@@ -2,6 +2,27 @@ import * as types from './actionTypes'
 import firebaseService from '../../services/firebase'
 
 const FIREBASE_REF_CONTATCS = firebaseService.database().ref('Contacts')
+const FIREBASE_REF_CONTATCS_LIMIT = 20;
+
+export const loadContacts = () => {
+  return (dispatch) => {
+    FIREBASE_REF_CONTATCS.limitToLast(FIREBASE_REF_CONTATCS_LIMIT).on('value', (snapshot) => {
+      dispatch(loadContactsSuccess(snapshot.val()))
+    }, (errorObject) => {
+      dispatch(loadContactsError(errorObject.message))
+    })
+  }
+}
+
+const loadContactsSuccess = contacts => ({
+  type: types.CONTACTS_LOAD_SUCCESS,
+  contacts
+})
+
+const loadContactsError = error => ({
+  type: types.CONTACTS_LOAD_ERROR,
+  error
+})
 
 export const restoreSession = () => {
   return (dispatch) => {
@@ -37,11 +58,6 @@ export const loginUser = (email, password) => {
             id: user.uid,
             email: user.email
           }
-          // FIREBASE_REF_CONTATCS.push().set(newUser, (error) => {
-          //   if (error) {
-          //     console.log('Create contact error: ', error)
-          //   }
-          // })
           FIREBASE_REF_CONTATCS.child(user.uid).set(newUser);
           dispatch(sessionSuccess(user))
           unsubscribe()
@@ -68,11 +84,6 @@ export const signupUser = (email, password) => {
             id: user.uid,
             email: user.email
           }
-          // FIREBASE_REF_CONTATCS.push().set(newUser, (error) => {
-          //   if (error) {
-          //     console.log('Create contact error: ', error)
-          //   }
-          // })
           FIREBASE_REF_CONTATCS.child(user.uid).set(newUser);
           unsubscribe()
         }

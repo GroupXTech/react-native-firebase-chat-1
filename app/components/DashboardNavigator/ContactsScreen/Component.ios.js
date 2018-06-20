@@ -1,8 +1,7 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 
-import MessagesList from './MessagesList'
-import MessageForm from './MessageForm'
+import ContactsList from './ContactsList'
 
 import styles from './Styles'
 
@@ -12,8 +11,7 @@ const ChatScreenComponent = () =>
     behavior='padding'
     keyboardVerticalOffset={64}>
 
-    <MessagesList />
-    <MessageForm />
+    <ContactsList />
   </KeyboardAvoidingView>
 
 export default ChatScreenComponent

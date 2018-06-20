@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { FlatList, Text } from 'react-native'
 import PropTypes from 'prop-types'
 
-import MessageRow from './MessageRow'
+import ContactRow from './ContactRow'
 
 import translations from '../../../../i18n'
 
@@ -10,13 +10,13 @@ import styles from './Styles'
 
 const ITEM_HEIGHT = 50
 
-class MessageListComponent extends Component {
+class ContactsListComponent extends Component {
 
   constructor() {
     super()
 
-    this.renderItem = ({item}) => {
-      return <MessageRow message={item} />
+    this.renderItem = ({ item }) => {
+      return <ContactRow contact={item} />
     }
 
     this.emptyList = () => {
@@ -29,13 +29,13 @@ class MessageListComponent extends Component {
     }
 
     this.itemLayout = (data, index) => (
-      {length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index}
+      { length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index }
     )
   }
 
   componentDidUpdate() {
     if (this.props.data.length) {
-        this.flatList.scrollToIndex({animated: true, index: 0});
+      this.flatList.scrollToIndex({ animated: true, index: 0 });
     }
   }
 
@@ -57,8 +57,8 @@ class MessageListComponent extends Component {
   }
 }
 
-MessageListComponent.propTypes = {
+ContactsListComponent.propTypes = {
   data: PropTypes.array.isRequired,
 }
 
-export default MessageListComponent
+export default ContactsListComponent

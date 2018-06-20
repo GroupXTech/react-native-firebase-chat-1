@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import MessageRow from './Component'
+import ContactRow from './Component'
 
 import firebaseService from '../../../../../services/firebase'
 
 class MessageRowContainer extends Component {
 
   render() {
-    const isCurrentUser = firebaseService.auth().currentUser.email == this.props.message.user.email;
+    const isCurrentUser = firebaseService.auth().currentUser.email == this.props.contact.email;
     return (
-      <MessageRow
-        message={this.props.message}
-        isCurrentUser={isCurrentUser}/>
+      <ContactRow
+        contact={this.props.contact}
+        isCurrentUser={isCurrentUser} />
     );
   }
 }
 
 MessageRowContainer.propTypes = {
-  message: PropTypes.object.isRequired,
+  contact: PropTypes.object.isRequired,
 }
 
 export default MessageRowContainer
